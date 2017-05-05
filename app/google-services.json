@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "184190255248",
+    "firebase_url": "https://videostore-baf85.firebaseio.com",
+    "project_id": "videostore-baf85",
+    "storage_bucket": "videostore-baf85.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:184190255248:android:3bb08a7d8e6c436e",
+        "android_client_info": {
+          "package_name": "com.example.jab.videostore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "184190255248-shiush0saqdba4hr6geneni5fpvc08oq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUKXOzIo4L55XYKT6pYU8pxNLhRjixm_U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
