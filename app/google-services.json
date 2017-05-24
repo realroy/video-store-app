@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "184190255248",
-    "firebase_url": "https://videostore-baf85.firebaseio.com",
-    "project_id": "videostore-baf85",
-    "storage_bucket": "videostore-baf85.appspot.com"
+    "project_number": "873095309960",
+    "firebase_url": "https://video-store-app.firebaseio.com",
+    "project_id": "video-store-app",
+    "storage_bucket": "video-store-app.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:184190255248:android:3bb08a7d8e6c436e",
+        "mobilesdk_app_id": "1:873095309960:android:3bb08a7d8e6c436e",
         "android_client_info": {
           "package_name": "com.example.jab.videostore"
         }
       },
       "oauth_client": [
         {
-          "client_id": "184190255248-shiush0saqdba4hr6geneni5fpvc08oq.apps.googleusercontent.com",
+          "client_id": "873095309960-ljd1d1uh6agmqji2dqnb359fs6o0e6hg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jab.videostore",
+            "certificate_hash": "e83171b87f2d6e9edf64bed07df53108887daf16"
+          }
+        },
+        {
+          "client_id": "873095309960-67gd6i6rhkgguntfd3mt2k34mjnimnnm.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCUKXOzIo4L55XYKT6pYU8pxNLhRjixm_U"
+          "current_key": "AIzaSyBO28mqaDBG_6UCyQCSiiLi8QSYqPkbPIg"
         }
       ],
       "services": {
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "873095309960-67gd6i6rhkgguntfd3mt2k34mjnimnnm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

@@ -11,7 +11,7 @@ public class Store {
 	private static Store instance = null;
 	private List<Video> videos;
 	private Store(){
-		//wait for code to retreive from database
+		// wait for code to retreive from database
 		videos = new ArrayList<>();
 		Video v1 = new Video("Jeeper Creeper",19,"Horor");
 		Video v2 = new Video("Brother of Grimby",50,"Comedy");
