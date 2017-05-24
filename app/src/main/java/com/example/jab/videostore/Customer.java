@@ -1,3 +1,5 @@
+package com.example.jab.videostore;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +12,7 @@ public class Customer {
 		this.id = id;
 		this.password = password;
 		this.balance = balance;
-		cart = new ArrayList<Video>();
+		cart = new ArrayList<>();
 	}
 	public String getId() {
 		return id;
