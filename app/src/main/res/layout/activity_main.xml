@@ -74,7 +74,7 @@
         android:textColor="#fff"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/text_balance" />
 
     <Button
         android:id="@+id/button_sign_in"
@@ -91,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/text_password" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/text_balance"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"

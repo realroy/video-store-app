@@ -14,11 +14,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class StoreActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Button button2 = (Button) findViewById(R.id.button2);
     private Customer customer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +47,13 @@ public class StoreActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        button2.setOnClickListener(new View.OnClickListener() {
+        final TextView text_username = (TextView) navigationView.findViewById(R.id.text_username);
+        Button button_test = (Button) findViewById(R.id.button_test);
+        button_test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //startActivity(new Intent(StoreActivity.this, ));
+                Toast.makeText(StoreActivity.this, text_username.getText().toString(), Toast.LENGTH_SHORT).show();
             }
         });
         Intent intent = getIntent();
