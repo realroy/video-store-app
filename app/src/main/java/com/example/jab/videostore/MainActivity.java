@@ -1,5 +1,6 @@
 package com.example.jab.videostore;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         text_password = (EditText) findViewById(R.id.text_password);
         button_sign_in = (Button) findViewById(R.id.button_sign_in);
         button_sign_up = (Button) findViewById(R.id.button_sign_up);
+
         View.OnClickListener onClickSignIn = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,6 +49,13 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         button_sign_in.setOnClickListener(onClickSignIn);
+        button_sign_up.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void onSignIn() {
