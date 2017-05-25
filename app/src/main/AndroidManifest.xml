@@ -15,8 +15,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".SignInActivity" />
         <activity android:name=".CartActivity"></activity>
+=======
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".TopUpActivity" />
+        <activity
+            android:name=".StoreActivity"
+            android:label="@string/title_activity_store"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+>>>>>>> 9e84f95d1e99eb6ab8ab643cfe90ce625914bca8
     </application>
 
 </manifest>
