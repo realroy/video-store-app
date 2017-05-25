@@ -1,5 +1,6 @@
 package com.example.jab.videostore;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -12,10 +13,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 public class StoreActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private Button button2 = (Button) findViewById(R.id.button2);
+    private Customer customer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +46,14 @@ public class StoreActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //startActivity(new Intent(StoreActivity.this, ));
+            }
+        });
+        Intent intent = getIntent();
+        customer = (Customer) intent.getSerializableExtra("CUSTOMER");
     }
 
     @Override
@@ -86,6 +98,10 @@ public class StoreActivity extends AppCompatActivity
             // Handle the camera action
         } else if (id == R.id.nav_cart) {
 
+        } else if (id == R.id.nav_top_up) {
+            Intent intent = new Intent(StoreActivity.this, TopUpActivity.class);
+            intent.putExtra("CUSTOMER", customer);
+            startActivity(intent);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

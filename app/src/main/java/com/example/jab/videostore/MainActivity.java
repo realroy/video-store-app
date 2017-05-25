@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
                 Customer customer = dataSnapshot.getValue(Customer.class);
                 if (customer != null) {
                     if (customer.getPassword().equals(password)) {
+                        Intent intent = new Intent(MainActivity.this, StoreActivity.class);
+                        intent.putExtra("CUSTOMER", customer);
                         startActivity(new Intent(MainActivity.this, StoreActivity.class));
                     } else {
                         Toast.makeText(MainActivity.this, errorText, Toast.LENGTH_LONG).show();

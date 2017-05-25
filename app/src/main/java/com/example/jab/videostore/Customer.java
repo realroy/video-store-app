@@ -1,6 +1,9 @@
 package com.example.jab.videostore;
 
-public class Customer {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Customer implements Serializable {
 	private String id, password, address;
 	private double balance;
 
