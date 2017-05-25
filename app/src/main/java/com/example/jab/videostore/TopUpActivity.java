@@ -1,9 +1,9 @@
 package com.example.jab.videostore;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-public class TopUp extends AppCompatActivity {
+public class TopUpActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
