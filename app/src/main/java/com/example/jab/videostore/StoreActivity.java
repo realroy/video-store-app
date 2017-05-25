@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -57,7 +58,13 @@ public class StoreActivity extends AppCompatActivity
             }
         });
         Intent intent = getIntent();
-        customer = (Customer) intent.getSerializableExtra("CUSTOMER");
+        //Bundle bundle = intent.getExtras();
+        customer = (Customer)intent.getSerializableExtra("CUSTOMER");
+        Log.d("A------------>", "onDataChange: " + customer.getId());
+        //int customerId = Integer.parseInt(intent.getStringExtra("CUSTOMER"));
+        //Log.d(customerId);
+        //System.out.println("============================================================================="+intent.getIntExtra("CUSTOMER"));
+        //customer = (Customer) intent.getExtras("CUSTOMER");
     }
 
     @Override

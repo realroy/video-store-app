@@ -3,6 +3,7 @@ package com.example.jab.videostore;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -63,8 +64,9 @@ public class MainActivity extends AppCompatActivity {
                 if (customer != null) {
                     if (customer.getPassword().equals(password)) {
                         Intent intent = new Intent(MainActivity.this, StoreActivity.class);
+                        Log.d("A------------>", "onDataChange: " + customer.getId());
                         intent.putExtra("CUSTOMER", customer);
-                        startActivity(new Intent(MainActivity.this, StoreActivity.class));
+                        startActivity(intent);
                     } else {
                         Toast.makeText(MainActivity.this, errorText, Toast.LENGTH_LONG).show();
                     }

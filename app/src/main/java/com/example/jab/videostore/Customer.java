@@ -2,7 +2,6 @@ package com.example.jab.videostore;
 
 import java.io.Serializable;
 
-@SuppressWarnings("serial")
 public class Customer implements Serializable {
 	private String id, password, address;
 	private double balance;
@@ -58,4 +57,5 @@ public class Customer implements Serializable {
 				", balance=" + balance +
 				'}';
 	}
+
 }
