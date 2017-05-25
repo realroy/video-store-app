@@ -4,6 +4,10 @@ public class Customer {
 	private String id, password, address;
 	private double balance;
 
+	// Empty constructor for firebase realtime database
+	public Customer() {
+	}
+
 	public Customer(String id, String password, String address) {
 		this.id = id;
 		this.password = password;

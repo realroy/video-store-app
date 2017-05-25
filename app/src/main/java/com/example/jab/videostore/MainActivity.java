@@ -20,20 +20,14 @@ public class MainActivity extends AppCompatActivity {
     private EditText text_password;
     private Button button_sign_in;
     private Button button_sign_up;
-    private DatabaseReference db;
+    private DatabaseReference customerRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initDb();
+        customerRef = FirebaseDatabase.getInstance().getReference("customers");
         initComponent();
-        db.child("users").setValue("Test");
-    }
-
-    private void initDb() {
-        db = FirebaseDatabase.getInstance().getReference("users");
-
     }
 
     private void initComponent() {
@@ -61,17 +55,18 @@ public class MainActivity extends AppCompatActivity {
     private void onSignIn() {
         String username = text_username.getText().toString();
         final String password = text_password.getText().toString();
-        db.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+        customerRef.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-//                String text = "Username or password is not correct!";
-//                User user = dataSnapshot.getValue(User.class);
-//                if (user != null) {
-//                    text = (user.getPassword().equals(password)) ?
-//                            "Login Successsfully" :
-//                            text;
-//                }
-//                Toast.makeText(MainActivity.this, text, Toast.LENGTH_LONG).show();
+                String errorText = "Username or password is not correct!";
+                Customer customer = dataSnapshot.getValue(Customer.class);
+                if (customer != null) {
+                    if (customer.getPassword().equals(password)) {
+                        startActivity(new Intent(MainActivity.this, StoreActivity.class));
+                    } else {
+                        Toast.makeText(MainActivity.this, errorText, Toast.LENGTH_LONG).show();
+                    }
+                }
             }
 
             @Override
