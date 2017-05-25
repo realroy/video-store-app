@@ -9,8 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class TopUpActivity extends AppCompatActivity {
     private Customer customer;
@@ -24,21 +27,32 @@ public class TopUpActivity extends AppCompatActivity {
         customer = (Customer) intent.getSerializableExtra("CUSTOMER");
         Log.d("A------------>", "onDataChange: " + customer.getId());
         Button confirm = (Button) findViewById(R.id.btn_confirm);
-        EditText money = (EditText)findViewById(R.id.text_amountMoney);
         money_to_add = customer.getBalance();
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addMoney(money_to_add);
+                addMoney();
             }
         });
     }
-    public void addMoney(double money){
-        this.money_to_add += money;
+    public void addMoney(){
+        EditText money = (EditText)findViewById(R.id.text_amountMoney);
+        System.out.println("=========================>"+money.getText().toString());
+        this.money_to_add += Integer.parseInt(money.getText().toString());
         customerRef.child(customer.getId())
                 .child("balance")
                 .setValue(money_to_add);
-        Log.d("===================", "addMoney: "+customerRef.getId());
-        Toast.makeText(this, ""+customer.getBalance(), Toast.LENGTH_SHORT).show();
+        customerRef.child(customer.getId()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                customer = dataSnapshot.getValue(Customer.class);
+                Toast.makeText(TopUpActivity.this, "" + customer.getBalance(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }
