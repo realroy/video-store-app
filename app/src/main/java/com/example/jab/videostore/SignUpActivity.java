@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,13 +39,25 @@ public class SignUpActivity extends AppCompatActivity {
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final String password = text_password.getText().toString();
                 final String username = text_username.getText().toString();
+                final String address = text_address.getText().toString();
+                String passwordAgain = text_password_again.getText().toString();
+                if (!password.equals(passwordAgain)) {
+                    Toast.makeText(SignUpActivity.this, "Password isn't the same value!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 customersRef.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        if (dataSnapshot == null) {
-
+                        boolean isUsernameExistence = dataSnapshot.hasChildren();
+                        if (isUsernameExistence) {
+                            Toast.makeText(SignUpActivity.this, "Username has already exist, Please Use another username", Toast.LENGTH_SHORT).show();
+                            return;
                         }
+                        Customer customer = new Customer(username, password, address);
+                        customersRef.child(username).setValue(customer);
                     }
 
                     @Override
