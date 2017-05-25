@@ -5,13 +5,13 @@ package com.example.jab.videostore;
  */
 
  public class Video {
- 	private String name;
+ 	private String name,category,info;
  	private double price;
- 	private String category;
- 	public Video(String name,double price,String category){
+ 	public Video(String name,double price,String category,String info){
  		this.name = name;
  		this.price = price;
  		this.category = category;
+		this.info = info;
  	}
  	public String getName() {
  		return name;
@@ -25,4 +25,10 @@ package com.example.jab.videostore;
  	public String toString(){
  		return "Name : "+name+" Price : "+price+" Category : "+category;
  	}
+ 	public void setInfo(String info){
+		this.info = info;
+	}
+	public String getInfo(){
+		return this.info;
+	}
  }

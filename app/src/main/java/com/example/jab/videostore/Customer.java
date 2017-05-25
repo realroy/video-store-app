@@ -4,14 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
-	private String id, password;
+	private String id, password , address;
 	private double balance;
 	private List<Video> cart;
-	public Customer(String id, String password, int balance) {
+
+	public Customer(String id, String password,String address, int balance) {
 		// TODO Auto-generated constructor stub
 		this.id = id;
 		this.password = password;
 		this.balance = balance;
+		this.address = address;
 		cart = new ArrayList<>();
 	}
 	public String getId() {
@@ -32,7 +34,12 @@ public class Customer {
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
-	
+	public String getAdress(){
+		return this.address;
+	}
+	public void setAddress(String address){
+		this.address = address;
+	}
 	public void addToCart(Video v){
 		cart.add(v);
 	}

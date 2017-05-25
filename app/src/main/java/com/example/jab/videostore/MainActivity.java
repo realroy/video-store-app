@@ -55,14 +55,14 @@ public class MainActivity extends AppCompatActivity {
         db.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String text = "Username or password is not correct!";
-                User user = dataSnapshot.getValue(User.class);
-                if (user != null) {
-                    text = (user.getPassword().equals(password)) ?
-                            "Login Successsfully" :
-                            text;
-                }
-                Toast.makeText(MainActivity.this, text, Toast.LENGTH_LONG).show();
+//                String text = "Username or password is not correct!";
+//                User user = dataSnapshot.getValue(User.class);
+//                if (user != null) {
+//                    text = (user.getPassword().equals(password)) ?
+//                            "Login Successsfully" :
+//                            text;
+//                }
+//                Toast.makeText(MainActivity.this, text, Toast.LENGTH_LONG).show();
             }
 
             @Override
