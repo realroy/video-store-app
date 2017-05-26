@@ -10,8 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -31,7 +34,7 @@ public class StoreActivity extends AppCompatActivity
     private List<Video> videoList;
     private DatabaseReference videosRef;
     private VideoAdapter videoAdapter;
-
+    private EditText text_search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,7 @@ public class StoreActivity extends AppCompatActivity
         Intent intent = getIntent();
         customer = (Customer)intent.getSerializableExtra("CUSTOMER");
         recycle_view_video = (RecyclerView) findViewById(R.id.recycle_view_video);
+        text_search = (EditText) findViewById(R.id.text_search);
         videoList = new ArrayList<>();
         videoList.add(new Video("Proxy", "Proxy", "Proxy", 1, 1, "Proxy"));
         videosRef = FirebaseDatabase.getInstance().getReference("videos");
@@ -79,6 +83,14 @@ public class StoreActivity extends AppCompatActivity
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
         recycle_view_video.setLayoutManager(layoutManager);
         recycle_view_video.setAdapter(videoAdapter);
+        text_search.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                Toast.makeText(StoreActivity.this, text_search.getText().toString(), Toast.LENGTH_SHORT);
+                videosRef.orderByChild("name").startAt(text_search.getText().toString());
+                return false;
+            }
+        });
     }
 
     @Override
