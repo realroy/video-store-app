@@ -23,7 +23,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CartActivity" />
         <activity android:name=".ConfirmPaymentActivity" />
-        <activity android:name=".DetailActivity"></activity>
+        <activity android:name=".DetailActivity" />
+        <activity android:name=".ProfileActivity"></activity>
     </application>
 
 </manifest>

@@ -4,7 +4,7 @@ package com.example.jab.videostore;
  * Created by Jab on 5/26/2017 AD.
  */
 
-public class ShoesAdapter implements Product{
+public class ShoesAdapter extends Product{
     private Shoes shoes;
     public ShoesAdapter(String brand,String edition,double price,int amount){
         shoes = new Shoes(brand,edition,price,amount);
