@@ -16,16 +16,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Search" />
+            android:hint="Search"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/category_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Category Search" />
+            android:hint="Category Search"
+            android:inputType="textPersonName" />
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
