@@ -2,11 +2,9 @@ package com.example.jab.videostore;
 
 import android.app.ListActivity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 public class CartActivity extends ListActivity {
@@ -20,14 +18,14 @@ public class CartActivity extends ListActivity {
         Intent intent = getIntent();
         customer = (Customer) intent.getSerializableExtra("CUSTOMER");
         System.out.println("========================>>>>>>>>>>>>>>>>>>"+customer.getId());
-        Video[] video = customer.getVideos();
-        for (Video e : video){
-            System.out.println(e);
-        }
-        ArrayAdapter<Video> adapter = new ArrayAdapter<Video>( this,
-                android.R.layout.simple_list_item_1, customer.getVideos());
+        //Video[] video = customer.getVideos();
+//        for (Video e : video){
+//            System.out.println(e);
+//        }
+//        ArrayAdapter<Video> adapter = new ArrayAdapter<Video>( this,
+//                android.R.layout.simple_list_item_1, customer.getVideos());
         Log.d("========>", "cart : ");
-        setListAdapter(adapter);
+//        setListAdapter(adapter);
 
         Button confirm = (Button) findViewById(R.id.btn_confirm_order);
         confirm.setOnClickListener(new View.OnClickListener() {

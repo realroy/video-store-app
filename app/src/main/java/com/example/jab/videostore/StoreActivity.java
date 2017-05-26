@@ -53,7 +53,6 @@ public class StoreActivity extends AppCompatActivity
 
         Intent intent = getIntent();
         customer = (Customer)intent.getSerializableExtra("CUSTOMER");
-
         recycle_view_video = (RecyclerView) findViewById(R.id.recycle_view_video);
         videoList = new ArrayList<>();
         videoList.add(new Video("Proxy", "Proxy", "Proxy", 1, 1, "Proxy"));
@@ -65,7 +64,7 @@ public class StoreActivity extends AppCompatActivity
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     videoList.add(postSnapshot.getValue(Video.class));
                 }
-                videoAdapter = new VideoAdapter(StoreActivity.this, videoList);
+                videoAdapter = new VideoAdapter(StoreActivity.this, videoList, customer.getId());
                 recycle_view_video.setAdapter(videoAdapter);
             }
 
@@ -75,7 +74,7 @@ public class StoreActivity extends AppCompatActivity
             }
         });
 
-        videoAdapter = new VideoAdapter(this, videoList);
+        videoAdapter = new VideoAdapter(this, videoList, customer.getId());
 
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
         recycle_view_video.setLayoutManager(layoutManager);

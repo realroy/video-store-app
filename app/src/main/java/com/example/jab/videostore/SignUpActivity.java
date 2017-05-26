@@ -1,5 +1,6 @@
 package com.example.jab.videostore;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -58,6 +59,10 @@ public class SignUpActivity extends AppCompatActivity {
                         }
                         Customer customer = new Customer(username, password, address);
                         customersRef.child(username).setValue(customer);
+                        Intent intent = new Intent(SignUpActivity.this, StoreActivity.class);
+                        intent.putExtra("CUSTOMER", customer);
+                        startActivity(intent);
+                        finish();
                     }
 
                     @Override

@@ -1,8 +1,8 @@
 package com.example.jab.videostore;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 public class ConfirmPaymentActivity extends AppCompatActivity {
 private Customer customer;
@@ -14,9 +14,9 @@ private Customer customer;
         customer = (Customer) intent.getSerializableExtra("CUSTOMER");
         System.out.println("++++++++++++++++++++++++++++ "+customer.getId());
         double total = 0;
-        for(Video e : customer.getVideos()){
-            total += e.getPrice();
-        }
+//        for(Video e : customer.getVideos()){
+//            total += e.getPrice();
+//        }
         System.out.println("++++++++++++++++++++++++++++ "+total);
 //        Video[] video = customer.getVideo();
 //        for (Video e : video){

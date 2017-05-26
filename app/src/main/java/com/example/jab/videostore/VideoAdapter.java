@@ -3,12 +3,14 @@ package com.example.jab.videostore;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
@@ -48,38 +50,35 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
         holder.button_see_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Go to VideoDetail Activity
-                Intent intent = new Intent(context,);
+                Intent intent = new Intent(context, DetailActivity.class);
                 context.startActivity(intent);
             }
         });
         holder.button_add_to_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Add to cart
+                Log.d("a", "onClick: " + customerId);
                 final DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference("orders");
                 ordersRef.child(customerId).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
+                        Order order;
                         if(!dataSnapshot.hasChildren()) {
                             List<Product> productList = new ArrayList<Product>();
                             productList.add(video);
-                            Order order = new Order(productList, customerId);
+                            order = new Order(productList, customerId);
                         } else {
-                            Order order = dataSnapshot.getValue(Order.class);
+                            order = dataSnapshot.getValue(Order.class);
                             order.getCartedProduct().add(video);
-                            ordersRef.child()
                         }
+                        ordersRef.child(customerId).setValue(order);
+                        Toast.makeText(context, video.getName() + "Added!", Toast.LENGTH_SHORT).show();
                     }
-
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
 
                     }
                 });
-                List<Product> productList = new ArrayList<Product>();
-                productList.add(video);
-                FirebaseDatabase.getInstance().getReference("orders").child(customerId).setValue();
             }
         });
         Glide.with(context)
