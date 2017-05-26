@@ -114,12 +114,12 @@ implements NavigationView.OnNavigationItemSelectedListener {
 			@Override
 			public boolean onKey(View v, int keyCode, KeyEvent event) {
 				Toast.makeText(StoreActivity.this, category_search.getText().toString(), Toast.LENGTH_SHORT);
-				videosRef.orderByChild("name").startAt(category_search.getText().toString()).addValueEventListener(new ValueEventListener() {
+				videosRef.orderByChild("category").startAt(category_search.getText().toString()).addValueEventListener(new ValueEventListener() {
 					@Override
 					public void onDataChange(DataSnapshot dataSnapshot) {
 						videoList = new ArrayList<Video>();
 						for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-							if(postSnapshot.getValue(Video.class).getName().contains(category_search.getText().toString())){
+							if(postSnapshot.getValue(Video.class).getCategory().contains(category_search.getText().toString())){
 								videoList.add(postSnapshot.getValue(Video.class));
 							}
 						}
