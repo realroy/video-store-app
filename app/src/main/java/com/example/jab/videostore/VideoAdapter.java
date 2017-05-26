@@ -67,11 +67,14 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
                             List<Product> productList = new ArrayList<Product>();
                             productList.add(video);
                             order = new Order(productList, customerId);
+                            ordersRef.child(customerId).setValue(order);
                         } else {
-                            order = dataSnapshot.getValue(Order.class);
-                            order.getCartedProducts().add(video);
+                            ordersRef.child(customerId)
+                                    .child("cartedProducts")
+                                    .push()
+                                    .setValue(video);
                         }
-                        ordersRef.child(customerId).setValue(order);
+
                         Toast.makeText(context, video.getName() + "Added!", Toast.LENGTH_SHORT).show();
                     }
                     @Override
