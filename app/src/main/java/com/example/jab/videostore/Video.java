@@ -4,39 +4,88 @@ package com.example.jab.videostore;
  * Created by Jab on 5/13/2017 AD.
  */
 
- public class Video implements Product{
+public class Video implements Product {
  	private String name,category,info;
  	private double price;
 	private int amount;
- 	public Video(String name,double price,String category,String info,int amount){
- 		this.name = name;
- 		this.price = price;
- 		this.category = category;
+	private String imgUrl;
+
+	// Empty Constructor for Firebase
+	public Video() {
+
+	}
+
+	public Video(String name, String category, String info, double price, int amount, String imgUrl) {
+		this.name = name;
+		this.category = category;
 		this.info = info;
+		this.price = price;
 		this.amount = amount;
- 	}
- 	public String getName() {
- 		return name;
- 	}
- 	public double getPrice() {
- 		return price;
- 	}
- 	public String getCategory() {
- 		return category;
- 	}
+		this.imgUrl = imgUrl;
+	}
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getInfo() {
+		return info;
+	}
+
+	public void setInfo(String info) {
+		this.info = info;
+	}
+
+	@Override
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
 
 	@Override
 	public int getAmount() {
-		return this.amount;
+		return amount;
 	}
 
-	public String toString(){
- 		return "Name : "+name+" Price : "+price+" Category : "+category;
- 	}
- 	public void setInfo(String info){
-		this.info = info;
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
-	public String getInfo(){
-		return this.info;
+
+	public String getImgUrl() {
+		return imgUrl;
 	}
- }
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+
+	@Override
+	public String toString() {
+		return "Video{" +
+				"name='" + name + '\'' +
+				", category='" + category + '\'' +
+				", info='" + info + '\'' +
+				", price=" + price +
+				", amount=" + amount +
+				", imgUrl='" + imgUrl + '\'' +
+				'}';
+	}
+
+}
