@@ -27,11 +27,18 @@ public class TopUpActivity extends AppCompatActivity {
         customer = (Customer) intent.getSerializableExtra("CUSTOMER");
         Log.d("A------------>", "onDataChange: " + customer.getId());
         Button confirm = (Button) findViewById(R.id.btn_confirm);
+        Button btn_back = (Button) findViewById(R.id.btn_back);
         money_to_add = customer.getBalance();
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addMoney();
+            }
+        });
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TopUpActivity.this, StoreActivity.class));
             }
         });
     }
