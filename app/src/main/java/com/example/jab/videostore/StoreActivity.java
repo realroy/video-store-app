@@ -80,7 +80,9 @@ public class StoreActivity extends AppCompatActivity
         if (id == R.id.nav_profile) {
             // Handle the camera action
         } else if (id == R.id.nav_cart) {
-
+            Intent intent = new Intent(StoreActivity.this, CartActivity.class);
+            intent.putExtra("CUSTOMER", customer);
+            startActivity(intent);
         } else if (id == R.id.nav_top_up) {
             Intent intent = new Intent(StoreActivity.this, TopUpActivity.class);
             intent.putExtra("CUSTOMER", customer);
