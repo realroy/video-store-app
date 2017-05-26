@@ -31,3 +31,4 @@ Patterns:
 
 Proxy Pattern in StoreActivity.java. Used when loading data from server
 Adapter Pattern for multipple type of product
+Strategy Pattern for payment methods(Giving discounts to VIP customers)

@@ -35,7 +35,7 @@ implements NavigationView.OnNavigationItemSelectedListener {
 	private DatabaseReference videosRef;
 	private VideoAdapter videoAdapter;
 	private EditText text_search;
-
+	private EditText category_search;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -57,7 +57,12 @@ implements NavigationView.OnNavigationItemSelectedListener {
 		Intent intent = getIntent();
 		customer = (Customer)intent.getSerializableExtra("CUSTOMER");
 		recycle_view_video = (RecyclerView) findViewById(R.id.recycle_view_video);
+		
+		
 		text_search = (EditText) findViewById(R.id.text_search);
+		category_search = (EditText) findViewById(R.id.category_search);
+		
+		
 		videoList = new ArrayList<>();
 		videoList.add(new Video("Proxy", "Proxy", "Proxy", 1, 1, "Proxy"));
 		videosRef = FirebaseDatabase.getInstance().getReference("videos");
@@ -92,7 +97,33 @@ implements NavigationView.OnNavigationItemSelectedListener {
 					public void onDataChange(DataSnapshot dataSnapshot) {
 						videoList = new ArrayList<Video>();
 						for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-							if(postSnapshot.getValue(Video.class).getName().equalsIgnoreCases(text_search.getText().toString())){
+							if(postSnapshot.getValue(Video.class).getName().contains(text_search.getText().toString())){
+								videoList.add(postSnapshot.getValue(Video.class));
+							}
+						}
+						videoAdapter = new VideoAdapter(StoreActivity.this, videoList, customer.getId());
+						recycle_view_video.setAdapter(videoAdapter);
+					}
+
+					@Override
+					public void onCancelled(DatabaseError databaseError) {
+
+					}
+				});
+				return false;
+			}
+		});
+		
+		category_search.setOnKeyListener(new View.OnKeyListener() {
+			@Override
+			public boolean onKey(View v, int keyCode, KeyEvent event) {
+				Toast.makeText(StoreActivity.this, category_search.getText().toString(), Toast.LENGTH_SHORT);
+				videosRef.orderByChild("category").startAt(text_search.getText().toString()).addValueEventListener(new ValueEventListener() {
+					@Override
+					public void onDataChange(DataSnapshot dataSnapshot) {
+						videoList = new ArrayList<Video>();
+						for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+							if(postSnapshot.getValue(Video.class).getName().contains(category_search.getText().toString())){
 								videoList.add(postSnapshot.getValue(Video.class));
 							}
 						}
