@@ -1,11 +1,13 @@
 package com.example.jab.videostore;
 
 
+import java.io.Serializable;
+
 /**
  * Created by Jab on 5/13/2017 AD.
  */
 
-public class Video implements Product {
+public class Video implements Product, Serializable {
 	private String name,category,info;
 	private double price;
 	private int amount;

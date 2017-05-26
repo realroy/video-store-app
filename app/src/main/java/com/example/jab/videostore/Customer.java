@@ -10,11 +10,14 @@ public class Customer implements Serializable, Observer {
 	private String id, password, address;
 	private double balance;
 	private List<Video> wishList;
-
+	private Video[] videos;
 
 	// Empty constructor for firebase realtime database
 	public Customer() {
 		wishList = new ArrayList<Video>();
+
+		videos = new Video[1];
+		videos[0] = new Video("Jeeper Creeper","Horor","Creep guy try to eat gay.",12, 0,"google.com");
 	}
 
 	public Customer(String id, String password, String address) {
@@ -22,8 +25,13 @@ public class Customer implements Serializable, Observer {
 		this.password = password;
 		this.address = address;
 		wishList = new ArrayList<Video>();
+		videos = new Video[1];
+		videos[0] = new Video("Jeeper Creeper","Horor","Creep guy try to eat gay.",12, 0,"google.com");
 	}
 
+	public  Video[] getVideos(){
+		return videos;
+	}
 	public String getId() {
 		return id;
 	}
