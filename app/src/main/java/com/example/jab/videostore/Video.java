@@ -1,13 +1,10 @@
 package com.example.jab.videostore;
 
-
-import java.io.Serializable;
-
 /**
  * Created by Jab on 5/13/2017 AD.
  */
 
-public class Video implements Product, Serializable {
+public class Video extends Product {
 	private String name,category,info;
 	private double price;
 	private int amount;
@@ -15,7 +12,7 @@ public class Video implements Product, Serializable {
 
 	// Empty Constructor for Firebase
 	public Video() {
-
+		
 	}
 
 	public Video(String name, String category, String info, double price, int amount, String imgUrl) {
