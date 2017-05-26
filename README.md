@@ -29,9 +29,9 @@ Roiboon:
 
 Patterns:
 
-Proxy Pattern in StoreActivity.java. Used when loading data from server
-Adapter Pattern for multipple type of product
-Strategy Pattern for payment methods(Giving discounts to VIP customers)
+- Proxy Pattern in StoreActivity.java. Used when loading data from server
+- Adapter Pattern for multipple type of product
+- Strategy Pattern for payment methods(Giving discounts to VIP customers)
 
 Link to use case and domain model:
 https://docs.google.com/document/d/1hxPY-EGHTeKZ6ipQPxhYk7-DwoeOJPhsRAnjY66hnQg/edit?usp=sharing
