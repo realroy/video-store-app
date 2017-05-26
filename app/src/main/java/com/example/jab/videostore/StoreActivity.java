@@ -87,7 +87,22 @@ public class StoreActivity extends AppCompatActivity
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 Toast.makeText(StoreActivity.this, text_search.getText().toString(), Toast.LENGTH_SHORT);
-                videosRef.orderByChild("name").startAt(text_search.getText().toString());
+                videosRef.orderByChild("name").startAt(text_search.getText().toString()).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        videoList = new ArrayList<Video>();
+                        for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                            videoList.add(postSnapshot.getValue(Video.class));
+                        }
+                        videoAdapter = new VideoAdapter(StoreActivity.this, videoList, customer.getId());
+                        recycle_view_video.setAdapter(videoAdapter);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
                 return false;
             }
         });
