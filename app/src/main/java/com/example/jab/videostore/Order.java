@@ -15,13 +15,13 @@ public class Order {
 		cartedProducts = list;
 		this.customerId = customerId;
 	}
-	
-	public List<Product> getCartedProduct() {
+
+	public List<Product> getCartedProducts() {
 		return cartedProducts;
 	}
 
-	public void setCartedProduct(List<Product> cartedProduct) {
-		this.cartedProducts = cartedProduct;
+	public void setCartedProducts(List<Product> cartedProducts) {
+		this.cartedProducts = cartedProducts;
 	}
 
 	public String getCustomerId() {
