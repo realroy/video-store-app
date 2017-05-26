@@ -13,10 +13,10 @@ public class Store {
 	private Store(){
 		// wait for code to retreive from database
 		videos = new ArrayList<>();
-		Video v1 = new Video("Jeeper Creeper",19,"Horor","Creep guy try to eat gay.");
-		Video v2 = new Video("Brother of Grimby",50,"Comedy","Shitty duo brother wreck the world.");
-		videos.add(v1);
-		videos.add(v2);
+//		Video v1 = new Video("Jeeper Creeper",19,"Horor","Creep guy try to eat gay.");
+//		Video v2 = new Video("Brother of Grimby",50,"Comedy","Shitty duo brother wreck the world.");
+//		videos.add(v1);
+//		videos.add(v2);
 	}
 	public Store getInstance(){
 		if(instance == null){
