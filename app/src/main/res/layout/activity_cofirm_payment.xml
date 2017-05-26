@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/amount"
+        android:id="@+id/textView_amount"
         android:layout_width="262dp"
         android:layout_height="67dp"
         android:layout_marginLeft="8dp"
@@ -44,7 +44,7 @@
         app:layout_constraintHorizontal_bias="0.404"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/btn_confirm_payment"
-        app:layout_constraintTop_toBottomOf="@+id/amount" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_amount" />
 
     <Button
         android:id="@+id/btn_confirm_payment"
@@ -54,5 +54,5 @@
         android:layout_marginTop="78dp"
         android:text="Confirm"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/amount" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_amount" />
 </android.support.constraint.ConstraintLayout>

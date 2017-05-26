@@ -18,6 +18,7 @@ public class CartActivity extends ListActivity {
         Intent intent = getIntent();
         customer = (Customer) intent.getSerializableExtra("CUSTOMER");
         System.out.println("========================>>>>>>>>>>>>>>>>>>"+customer.getId());
+
         //Video[] video = customer.getVideos();
 //        for (Video e : video){
 //            System.out.println(e);

@@ -3,6 +3,8 @@ package com.example.jab.videostore;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -28,7 +30,20 @@ public class ProfileActivity extends AppCompatActivity {
 
         address.setText("ADDRESS : "+customer.getAddress());
         //customer = dataSnapshot.getValue(Customer.class);
+
         balance = (TextView) findViewById(R.id.textView_user_balance);
+
+        Button store = (Button) findViewById(R.id.btn_back_store);
+        store.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(ProfileActivity.this,StoreActivity.class);
+                intent1.putExtra("CUSTOMER",customer);
+                startActivity(intent1);
+
+            }
+        });
+
         customerRef.child(customer.getId()).child("balance").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
