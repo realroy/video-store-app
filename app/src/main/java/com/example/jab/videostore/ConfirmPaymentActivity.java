@@ -38,10 +38,12 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
                     double result = customer.getBalance() - newTotalCost;
                     customersRef.child(customer.getId()).child("balance").setValue(result);
                     Intent intent = new Intent(ConfirmPaymentActivity.this, ProfileActivity.class);
+                    intent.putExtra("CUSTOMER", customer);
                     startActivity(intent);
                 }
             }
         });
+
 
 
     }

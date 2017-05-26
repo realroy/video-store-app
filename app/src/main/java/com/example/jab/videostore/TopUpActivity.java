@@ -44,7 +44,7 @@ public class TopUpActivity extends AppCompatActivity {
     }
     public void addMoney(){
         EditText money = (EditText)findViewById(R.id.text_amountMoney);
-        System.out.println("=========================>"+money.getText().toString());
+        System.out.println("=========================>"+money.getText(  ).toString());
         this.money_to_add += Integer.parseInt(money.getText().toString());
         customerRef.child(customer.getId())
                 .child("balance")
