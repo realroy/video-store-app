@@ -1,6 +1,7 @@
 package com.example.jab.videostore;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,17 +11,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> {
 
     private Context context;
     private List<Video> videoList;
+    private String customerId;
 
-    public VideoAdapter(Context context, List<Video> videoList) {
+    public VideoAdapter(Context context, List<Video> videoList, String customerId) {
         this.context = context;
         this.videoList = videoList;
+        this.customerId = customerId;
     }
 
     @Override
@@ -32,7 +41,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Video video = videoList.get(position);
+        final Video video = videoList.get(position);
         holder.text_video_price.setText("Price: " + String.valueOf(video.getPrice() + "$"));
         holder.text_video_name.setText(String.valueOf(video.getName()));
         holder.text_video_category.setText("Category: " + String.valueOf(video.getCategory()));
@@ -40,12 +49,37 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
             @Override
             public void onClick(View v) {
                 // TODO: Go to VideoDetail Activity
+                Intent intent = new Intent(context,);
+                context.startActivity(intent);
             }
         });
         holder.button_add_to_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO: Add to cart
+                final DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference("orders");
+                ordersRef.child(customerId).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if(!dataSnapshot.hasChildren()) {
+                            List<Product> productList = new ArrayList<Product>();
+                            productList.add(video);
+                            Order order = new Order(productList, customerId);
+                        } else {
+                            Order order = dataSnapshot.getValue(Order.class);
+                            order.getCartedProduct().add(video);
+                            ordersRef.child()
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+                List<Product> productList = new ArrayList<Product>();
+                productList.add(video);
+                FirebaseDatabase.getInstance().getReference("orders").child(customerId).setValue();
             }
         });
         Glide.with(context)
