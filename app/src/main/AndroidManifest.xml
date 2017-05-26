@@ -20,9 +20,10 @@
         <activity
             android:name=".StoreActivity"
             android:label="@string/title_activity_store"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".CartActivity"/>
-        <activity android:name=".ConfirmPaymentActivity"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CartActivity" />
+        <activity android:name=".ConfirmPaymentActivity" />
+        <activity android:name=".DetailActivity"></activity>
     </application>
 
 </manifest>
