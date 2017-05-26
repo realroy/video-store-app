@@ -1,12 +1,13 @@
 package com.example.jab.videostore;
 
+
 /**
  * Created by Jab on 5/13/2017 AD.
  */
 
 public class Video implements Product {
- 	private String name,category,info;
- 	private double price;
+	private String name,category,info;
+	private double price;
 	private int amount;
 	private String imgUrl;
 
@@ -87,5 +88,10 @@ public class Video implements Product {
 				", imgUrl='" + imgUrl + '\'' +
 				'}';
 	}
-
+	public void restock() {
+		this.amount += 10;
+	}
+	public boolean productAvailable(){
+		return amount > 0;
+	}
 }

@@ -1,19 +1,27 @@
 package com.example.jab.videostore;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Customer implements Serializable {
+public class Customer implements Serializable, Observer {
 	private String id, password, address;
 	private double balance;
+	private List<Video> wishList;
+
 
 	// Empty constructor for firebase realtime database
 	public Customer() {
+		wishList = new ArrayList<Video>();
 	}
 
 	public Customer(String id, String password, String address) {
 		this.id = id;
 		this.password = password;
 		this.address = address;
+		wishList = new ArrayList<Video>();
 	}
 
 	public String getId() {
@@ -56,6 +64,27 @@ public class Customer implements Serializable {
 				", address='" + address + '\'' +
 				", balance=" + balance +
 				'}';
+	}
+
+
+	public void addToWishList(Video vid){
+		wishList.add(vid);
+	}
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		if(arg1 instanceof Video){
+			Video temp = (Video) arg1;
+			if(wishList.contains(temp)){
+				System.out.println(temp.getName() + " has been restock.");
+			}
+		}	else if(arg1 instanceof List){
+			List<Video> temp = (List)arg1;
+			for(Video vid: temp){
+				if(wishList.contains(vid)) 
+					System.out.println(vid.getName() + " has been restock.");
+			}
+		}
 	}
 
 }
