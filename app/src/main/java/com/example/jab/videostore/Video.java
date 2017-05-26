@@ -1,10 +1,12 @@
 package com.example.jab.videostore;
 
+import java.io.Serializable;
+
 /**
  * Created by Jab on 5/13/2017 AD.
  */
 
-public class Video extends Product {
+public class Video extends Product implements Serializable {
 	private String name,category,info;
 	private double price;
 	private int amount;
@@ -78,14 +80,7 @@ public class Video extends Product {
 
 	@Override
 	public String toString() {
-		return "Video{" +
-				"name='" + name + '\'' +
-				", category='" + category + '\'' +
-				", info='" + info + '\'' +
-				", price=" + price +
-				", amount=" + amount +
-				", imgUrl='" + imgUrl + '\'' +
-				'}';
+		return String.format("%s\n%s\n%f $", name, category, price);
 	}
 	public void restock() {
 		this.amount += 10;
