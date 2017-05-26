@@ -34,7 +34,7 @@ public class SignUpActivity extends AppCompatActivity {
         text_address = (EditText) findViewById(R.id.text_address);
         text_password = (EditText) findViewById(R.id.text_password);
         text_password_again = (EditText) findViewById(R.id.text_password_again);
-        text_username = (EditText) findViewById(R.id.text_username);
+        text_username = (EditText) findViewById(R.id.text_greeting_user);
         btn_confirm = (Button) findViewById(R.id.button_confirm);
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override

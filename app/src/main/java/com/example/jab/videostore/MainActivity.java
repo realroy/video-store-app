@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initComponent() {
-        text_username = (EditText) findViewById(R.id.text_username);
+        text_username = (EditText) findViewById(R.id.text_greeting_user);
         text_password = (EditText) findViewById(R.id.text_password);
         button_sign_in = (Button) findViewById(R.id.button_sign_in);
         button_sign_up = (Button) findViewById(R.id.button_sign_up);
