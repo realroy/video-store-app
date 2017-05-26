@@ -15,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class ConfirmPaymentActivity extends AppCompatActivity {
     private Customer customer;
     private double totalCost;
+    private Payment payment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,17 +23,19 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
         Intent intent = getIntent();
         customer = (Customer) intent.getSerializableExtra("CUSTOMER");
         final double totalCost = intent.getExtras().getDouble("TOTAL_COST");
-        TextView amount = (TextView) findViewById(R.id.amount);
+        TextView amount = (TextView) findViewById(R.id.textView_amount);
         Button confirm = (Button) findViewById(R.id.btn_confirm_payment);
         amount.setText(String.valueOf(totalCost));
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (customer.getBalance() < totalCost) {
-                    Toast.makeText(ConfirmPaymentActivity.this, "Insufficient balance! Please top up", Toast.LENGTH_SHORT).show();
+                payment = (customer.getBalance() > 5000) ? new SalePayment() : new NomalPayment();
+                double newTotalCost = payment.calculate(totalCost);
+                if (customer.getBalance() < newTotalCost) {
+                    Toast.makeText(ConfirmPaymentActivity.this, "Insufficient balance! Please top up your balance", Toast.LENGTH_SHORT).show();
                 } else {
                     DatabaseReference customersRef = FirebaseDatabase.getInstance().getReference("customers");
-                    double result = customer.getBalance() - totalCost;
+                    double result = customer.getBalance() - newTotalCost;
                     customersRef.child(customer.getId()).child("balance").setValue(result);
                     Intent intent = new Intent(ConfirmPaymentActivity.this, ProfileActivity.class);
                     startActivity(intent);
